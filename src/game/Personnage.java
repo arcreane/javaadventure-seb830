@@ -5,23 +5,20 @@ public class Personnage {
 	//proprietes
 	protected String nom;
 	protected int pointVie;
-	protected int maxVie;
 	public boolean vivant;
-	public static boolean playTour;
+	protected String race;
 	
 		
 	//constructs
 	public Personnage() {
-		this("", 50, 50, true);
+		this("", 50, true, "");
 	}
-	public Personnage(String nom, int pointVie, int maxVie, boolean vivant) {
+	public Personnage(String nom, int pointVie, boolean vivant, String race) {
 		this.setNom(nom);
 		this.setPointVie(pointVie);
-		this.setMaxVie(maxVie);
 		this.setVivant(vivant);
-		
+		this.setRace(race);
 	}
-	
 	
 	//accesseurs
 	public String getNom() {
@@ -36,17 +33,17 @@ public class Personnage {
 	public void setPointVie(int pointVie) {
 		this.pointVie = pointVie;
 	}
-	public int getMaxVie() {
-		return maxVie;
-	}
-	public void setMaxVie(int maxVie) {
-		this.maxVie = maxVie;
-	}
 	public boolean isVivant() {
 		return vivant;
 	}
 	public void setVivant(boolean vivant) {
 		this.vivant = vivant;
+	}
+	public String getRace() {
+		return race;
+	}
+	public void setRace(String race) {
+		this.race = race;
 	}
 
    //methodes
@@ -56,5 +53,13 @@ public class Personnage {
 			setVivant(this.vivant = false);
 			System.out.println(perso.nom + " est mort");
 		}return this.vivant;
+	}
+
+	public static void attaque(Personnage perso) {
+		int tour = 0;
+		int chance = Arme.randCoup(10);
+		int chance2 = Arme.randCoup(3);
+		int degat = 0;
+		
 	}
 }

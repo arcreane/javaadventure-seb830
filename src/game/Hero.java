@@ -5,23 +5,13 @@ import game.Monstre;
 public class Hero  extends Personnage{
 
 	//proprietes
-	private String race;
 	public Arme arme[]  = {new Arme("épée", 10), new Arme("fiole flasque", 8)};
 	//construct
-	public Hero(String nom, int pointVie, int maxVie, boolean vivant, String race) {
-		super(nom, pointVie, maxVie, vivant);
-		this.setRace(race);
+	public Hero(String nom, int pointVie, boolean vivant, String race) {
+		super(nom, pointVie, vivant, race);
 	}
-	
-	//getter et setter arme du Hero
-	public String getRace() {
-		return race;
-	}
-	public void setRace(String race) {
-		this.race = race;
-	}
-	
 
+	
 	//methodes
 	public void attaque(Monstre monster) {
 		int tour = 0;
@@ -72,4 +62,5 @@ public class Hero  extends Personnage{
         System.out.println("|                                    | |");
         System.out.println("l____________________________________|/");		
 	}
+	
 }

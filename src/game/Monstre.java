@@ -2,29 +2,17 @@ package game;
 
 public class Monstre extends Personnage{
 	
-	//proprietes
-	private String race;
+
 	//public int pointVie;
 	public Arme arme = new Arme(" ", 0);
 
 	//construct
-	public Monstre(String nom, int pointVie, int maxVie, boolean vivant, String race, Arme arme) {
-		super(nom, pointVie, maxVie, vivant);
-		this.setRace(race);
+	public Monstre(String nom, int pointVie, boolean vivant, String race, Arme arme) {
+		super(nom, pointVie, vivant, race);
 		this.setArme(arme);
 	}
-	public Monstre() {
-		
-	}
-	
 	
 	//accesseurs
-	public String getRace() {
-		return race;
-	}
-	public void setRace(String race) {
-		this.race = race;
-	}
 
 	public int getPointVie() {
 		return pointVie;
@@ -59,12 +47,12 @@ public class Monstre extends Personnage{
 		do	{
 		if (arme.getNom().equals("eclair")){
 			if(chance == 1) {
-				degat = this.arme.getDegat();
 				System.out.println("Baltazar lance un eclair qui vous paralyse : -" + degat + " points de vie\n");
 				System.out.println("il en profite pour vous attaquer de nouveau : -" + degat + " points de vie\n");
+				degat *= 2;
 				tour ++ ;	
 			}else {
-				degat = this.arme.getDegat();
+				
 				System.out.println("Baltazar vous attaque avec son baton spherique : -" + degat + " points de vie");
 				tour++;
 			}

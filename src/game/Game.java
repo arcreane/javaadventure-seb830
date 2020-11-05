@@ -11,7 +11,6 @@ public class Game {
 	public void playing() {
 		
 		while(!starting) {
-		
 			System.out.println(" ________________________________________");
 			System.out.println("\\             Votre mission             \\");
 			System.out.println(" \\  Votre roi Ferdinand IV vous confie   \\");
@@ -31,7 +30,7 @@ public class Game {
 		String choice = scan.nextLine();	
 			
 		do {
-				
+			
 		if(choice.equals("e")){
 			initGame();
 			starting = true;
@@ -43,16 +42,15 @@ public class Game {
 			break;	
 		}else {
 			System.out.println("Vous n\'avez que deux solutions, décidez vous");
-			break;
-			}	
+			
+		}
 		}while(!choice.equals("e") || !choice.equals("q"));
 		return choice;
 	}
 	
 	public void initGame() {
 			//Donjon donjon = new Donjon(6, false);
-			Hero player1 = new Hero("Bernard", 50, 50, false, "Chevalier");
-		
+			Hero player1 = new Hero("Bernard", 50, false, "Chevalier");
 			System.out.println("Vous ouvrez la porte du Donjon et entrez dans une salle.... ");
 			stage(player1);
 	}
@@ -62,24 +60,26 @@ public class Game {
 		String ok = scan.nextLine();	
 			
 		do {
-			if(ok.equals("n")){
-				
-			}else {
-				System.out.println("tour suivant - appuyez sur la touche : n"); 
+			if(!ok.equals("n")){
+				System.out.println("mauvaise commande");
 				break;
-			} 
+			}
 		}while(!ok.equals("n"));
 	}
 	
 	public String scanArme() {
 		Scanner scan = new Scanner(System.in);
-		String chooseArme = scan.nextLine();
+		String choixArme = scan.nextLine();
 		 
 		do{ 
-			System.out.println("mauvaise commande");
-			break;
-		}while(!chooseArme.equals("epee") || chooseArme.equals("fiole"));
-		 return chooseArme;
+			if(!choixArme.equals("epee") || !choixArme.equals("fiole")) {
+				System.out.println("mauvaise commande");
+				break;
+			}else {
+				System.out.println("");
+			}
+		}while(!choixArme.equals("epee") || choixArme.equals("fiole"));
+		return choixArme;
 	}
 	
 	public void stage(Hero player1) {
@@ -97,22 +97,22 @@ public class Game {
 		System.out.println("|______________________________|\n");
 	
 		if(rand == 1) {
-			Monstre monstre = new Monstre("baltazar", 20, 20, false, "magicien", new Arme("eclair", 8));
+			Monstre monstre = new Monstre("baltazar", 20, false, "magicien", new Arme("eclair", 8));
 			
 			do{
 				monstre.attaque(player1);
-				System.out.println("tour suivant - appuyez sur la touche : n");
+				System.out.println("tour suivant - appuyez sur la touche n");
 				scannerCombat();
 				
 				System.out.println("Entrer le nom de l'arme à utiliser : epee ou fiole");
 				String choixArme = scanArme();
+				
 					if(choixArme.equals("fiole")) {
 						player1.attaque(monstre);
-						System.out.println("tour suivant - appuyez sur la touche : n");
+						System.out.println("tour suivant - appuyez sur la touche n");
 						scannerCombat();
 					}else {
 						System.out.println("Votre coup à echoué");
-						System.out.println("tour suivant - appuyez sur la touche : n");
 					}
 				if(player1.getPointVie() <= 0){
 					player1.setPointVie(0);
@@ -129,29 +129,22 @@ public class Game {
 				
 		
 		}else if(rand == 2){
-			Monstre monstre = new Monstre("patrick", 20, 15, false, "barbare", new Arme("hache", 5));
+			Monstre monstre = new Monstre("patrick", 20, false, "barbare", new Arme("hache", 5));
 			
 			do
 			{
 				monstre.attaque(player1);
-				System.out.println("tour suivant - appuyez sur la touche : n");
+				System.out.println("tour suivant - appuyez sur la touche n");
 				scannerCombat();
-				
 				System.out.println("Entrer le nom de l'arme à utiliser : epee ou fiole");
 				String choixArme = scanArme();
 				
-				player1.attaque(monstre);
-				scannerCombat();
-				System.out.println("tour suivant - appuyez sur la touche : n");
-				
 				if(choixArme.equals("epee")) {
-					
 					player1.attaque(monstre);
-					System.out.println("tour suivant - appuyez sur la touche : n");
+					System.out.println("tour suivant - appuyez sur la touche n");
 					scannerCombat();
 				}else {
 					System.out.println("Votre coup à echoué");
-					System.out.println("tour suivant - appuyez sur la touche : n");
 				}
 			
 			if(player1.getPointVie() <= 0){
@@ -174,14 +167,12 @@ public class Game {
 	}
 	
 	public void afficheFin() {
-		
-		
-		System.out.println("  \\_|__/___\\_/_/");
-		System.out.println(" \\|             | /");
-		System.out.println("–– |     FIN     | /");
-		System.out.println(" / |             |–– ");
-		System.out.println("  /|_____________| –");
-		System.out.println("   / | \\ |  | \\\\");
+		System.out.println("  	_____________");
+		System.out.println("   |             |");
+		System.out.println("   |     FIN     |");
+		System.out.println("   |             |");
+		System.out.println("   |_____________|");
+	
 	}
 	
 	

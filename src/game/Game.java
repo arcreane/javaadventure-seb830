@@ -63,13 +63,23 @@ public class Game {
 			
 		do {
 			if(ok.equals("n")){
-				break;
+				
 			}else {
-				System.out.println("mauvaise commande");
 				System.out.println("tour suivant - appuyez sur la touche : n"); 
 				break;
 			} 
 		}while(!ok.equals("n"));
+	}
+	
+	public String scanArme() {
+		Scanner scan = new Scanner(System.in);
+		String chooseArme = scan.nextLine();
+		 
+		do{ 
+			System.out.println("mauvaise commande");
+			break;
+		}while(!chooseArme.equals("epee") || chooseArme.equals("fiole"));
+		 return chooseArme;
 	}
 	
 	public void stage(Hero player1) {
@@ -78,7 +88,7 @@ public class Game {
 	if(starting =true)	
 	{
 		int salle = 1;
-		for(salle = 1; salle < 7; salle++)
+		for(salle = 1; salle < 6; salle++)
 		{
 		
 		System.out.println(" ______________________________");
@@ -94,9 +104,16 @@ public class Game {
 				System.out.println("tour suivant - appuyez sur la touche : n");
 				scannerCombat();
 				
-				player1.attaque(monstre);
-				System.out.println("tour suivant - appuyez sur la touche : n");
-				scannerCombat();	
+				System.out.println("Entrer le nom de l'arme à utiliser : epee ou fiole");
+				String choixArme = scanArme();
+					if(choixArme.equals("fiole")) {
+						player1.attaque(monstre);
+						System.out.println("tour suivant - appuyez sur la touche : n");
+						scannerCombat();
+					}else {
+						System.out.println("Votre coup à echoué");
+						System.out.println("tour suivant - appuyez sur la touche : n");
+					}
 				if(player1.getPointVie() <= 0){
 					player1.setPointVie(0);
 					System.out.println("Le magicien vous assène le coup de grâce, vous avez perdu");
@@ -106,15 +123,13 @@ public class Game {
 					monstre.setPointVie(0);
 					
 					System.out.println("Vous parvenez à vous débarasser du magicien et avancez dans la salle numero " + (salle + 1));
-					
-					
 					break;
 				}
 			}while(player1.getPointVie() > 0 || monstre.getPointVie() > 0);
 				
 		
 		}else if(rand == 2){
-			Monstre monstre = new Monstre("patrick", 20, 20, false, "barbare", new Arme("hache", 5));
+			Monstre monstre = new Monstre("patrick", 20, 15, false, "barbare", new Arme("hache", 5));
 			
 			do
 			{
@@ -122,10 +137,22 @@ public class Game {
 				System.out.println("tour suivant - appuyez sur la touche : n");
 				scannerCombat();
 				
+				System.out.println("Entrer le nom de l'arme à utiliser : epee ou fiole");
+				String choixArme = scanArme();
+				
 				player1.attaque(monstre);
 				scannerCombat();
 				System.out.println("tour suivant - appuyez sur la touche : n");
 				
+				if(choixArme.equals("epee")) {
+					
+					player1.attaque(monstre);
+					System.out.println("tour suivant - appuyez sur la touche : n");
+					scannerCombat();
+				}else {
+					System.out.println("Votre coup à echoué");
+					System.out.println("tour suivant - appuyez sur la touche : n");
+				}
 			
 			if(player1.getPointVie() <= 0){
 				player1.setPointVie(0);
@@ -140,9 +167,26 @@ public class Game {
 			}
 		}while(player1.getPointVie() > 0 || monstre.getPointVie() > 0);
 		}
-
+		}
 	}
+	System.out.println("Vous entrez dans la Derniere salle du donjon et decouvez le tresor\n");
+	afficheFin();	
 	}
+	
+	public void afficheFin() {
+		
+		
+		System.out.println("  \\_|__/___\\_/_/");
+		System.out.println(" \\|             | /");
+		System.out.println("–– |     FIN     | /");
+		System.out.println(" / |             |–– ");
+		System.out.println("  /|_____________| –");
+		System.out.println("   / | \\ |  | \\\\");
 	}
+	
+	
+	
+	
+	
 	
 }

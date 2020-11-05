@@ -59,23 +59,23 @@ public class Monstre extends Personnage{
 		do	{
 		if (arme.getNom().equals("eclair")){
 			if(chance == 1) {
+				degat = this.arme.getDegat();
 				System.out.println("Baltazar lance un eclair qui vous paralyse : -" + degat + " points de vie\n");
 				System.out.println("il en profite pour vous attaquer de nouveau : -" + degat + " points de vie\n");
-				degat = this.arme.getDegat();
 				tour ++ ;	
 			}else {
-				System.out.println("Baltazar vous attaque avec son baton spherique : -" + degat + " points de vie");
 				degat = this.arme.getDegat();
+				System.out.println("Baltazar vous attaque avec son baton spherique : -" + degat + " points de vie");
 				tour++;
 			}
 		}else if (arme.getNom().equals("hache")){
 			if(chance2 == 3) {
-				System.out.println("Patrick le barbare vous attaque avec une force prodigieuse, +30% de dégats : -" + degat + " points de vie");	
 				degat = this.arme.getDegat() * 100 / 30;
+				System.out.println("Patrick le barbare vous attaque avec une force prodigieuse, +30% de dégats : -" + degat + " points de vie");	
 				tour++;
 			}else {
-				System.out.println("Patrick le barbare vous attaque avec sa hache : -" + degat + " points de vie");
 				degat = this.arme.getDegat();
+				System.out.println("Patrick le barbare vous attaque avec sa hache : -" + degat + " points de vie");
 				tour++;
 			}
 		}

@@ -38,13 +38,4 @@ public class Arme {
 		}
 		return chance;
 	}
-	
-	public void paralyse() {
-		
-	}
-	
-	
-	
-	
-
 }

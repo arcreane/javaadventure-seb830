@@ -22,34 +22,14 @@ public class Game {
 			System.out.println("  /   e - entrer   q - battre en retraite /");
 			System.out.println(" /_______________________________________/");
 			scanner();
-		/*
-		Donjon donjon = new Donjon(6, false);
-		Hero player1 = new Hero("john", 50, 50, false, "Chevalier", new Arme("épée", 10));
-		
-		Monstre cpu = new Monstre("baltazar", 40, 40, false, "Magicien", new Arme("eclair", 8));
-		
-		int heroVie = player1.getPointVie();
-		int cpuVie = cpu.getPointVie();
-		System.out.println("john a " + heroVie + " points de vie et baltazar a " + cpuVie + " points de vie");
-		System.out.println("john attaque le magicien\n");
-		player1.attaque(cpu);
-		cpu.attaque(player1);
-		
-		System.out.println("baltazar a " + player1.getPointVie() + " points de vie Bernard : " + cpu.getPointVie());
-		
-		cpu.attaque(player1);
-		cpu.affiècheStatsMonstre(cpu,player1, cpu.arme);
-		*/
 		}
 	}
 	
 
 	public String scanner() {
-		
 		Scanner scan = new Scanner(System.in);
 		String choice = scan.nextLine();	
 			
-		
 		do {
 				
 		if(choice.equals("e")){
@@ -60,8 +40,7 @@ public class Game {
 		}else if(choice.equals("q")) {
 			System.out.println("Vous repartez sur vos terre, votre roi ne sera pas fier de vous");
 			starting = true;
-			break;
-			
+			break;	
 		}else {
 			System.out.println("Vous n\'avez que deux solutions, décidez vous");
 			break;
@@ -71,8 +50,7 @@ public class Game {
 	}
 	
 	public void initGame() {
-		
-			Donjon donjon = new Donjon(6, false);
+			//Donjon donjon = new Donjon(6, false);
 			Hero player1 = new Hero("Bernard", 50, 50, false, "Chevalier");
 		
 			System.out.println("Vous ouvrez la porte du Donjon et entrez dans une salle.... ");
@@ -80,53 +58,91 @@ public class Game {
 	}
 
 	public void scannerCombat() {
-			
 		Scanner scan = new Scanner(System.in);
-		char ok = scan.nextLine().charAt(1);	
+		String ok = scan.nextLine();	
 			
 		do {
-			if(ok == 'n'){
+			if(ok.equals("n")){
 				break;
 			}else {
 				System.out.println("mauvaise commande");
 				System.out.println("tour suivant - appuyez sur la touche : n"); 
 				break;
 			} 
-		}while(ok != 'n');
-		
+		}while(!ok.equals("n"));
 	}
-		
-
+	
 	public void stage(Hero player1) {
 		int rand = Monstre.randMonstre();
 		
+	if(starting =true)	
+	{
+		int salle = 1;
+		for(salle = 1; salle < 7; salle++)
+		{
+		
+		System.out.println(" ______________________________");
+		System.out.println("|                              |");
+		System.out.println("             SALLE " + salle       );
+		System.out.println("|______________________________|\n");
+	
 		if(rand == 1) {
 			Monstre monstre = new Monstre("baltazar", 20, 20, false, "magicien", new Arme("eclair", 8));
-			while(!monstre.estMort(monstre)|| !player1.estMort(player1))
-			{
+			
+			do{
 				monstre.attaque(player1);
-				//monstre.afficheStatsMonstre(monstre, player1, 8);
 				System.out.println("tour suivant - appuyez sur la touche : n");
 				scannerCombat();
 				
 				player1.attaque(monstre);
 				System.out.println("tour suivant - appuyez sur la touche : n");
-				scannerCombat();
+				scannerCombat();	
+				if(player1.getPointVie() <= 0){
+					player1.setPointVie(0);
+					System.out.println("Le magicien vous assène le coup de grâce, vous avez perdu");
+					starting = false;
+					break;
+				}else if(monstre.getPointVie() <= 0) {
+					monstre.setPointVie(0);
+					
+					System.out.println("Vous parvenez à vous débarasser du magicien et avancez dans la salle numero " + (salle + 1));
+					
+					
+					break;
+				}
+			}while(player1.getPointVie() > 0 || monstre.getPointVie() > 0);
 				
-			}
+		
 		}else if(rand == 2){
 			Monstre monstre = new Monstre("patrick", 20, 20, false, "barbare", new Arme("hache", 5));
-			while(!monstre.estMort(monstre) ) {
-				//System.out.println("Vous etes attaqué par " + monstre.getNom() + " le " + monstre.getRace());
+			
+			do
+			{
 				monstre.attaque(player1);
-				//monstre.afficheStatsMonstre(monstre, player1, 8);
 				System.out.println("tour suivant - appuyez sur la touche : n");
 				scannerCombat();
 				
 				player1.attaque(monstre);
 				scannerCombat();
 				System.out.println("tour suivant - appuyez sur la touche : n");
+				
+			
+			if(player1.getPointVie() <= 0){
+				player1.setPointVie(0);
+				System.out.println("\nLe barbare vous assène le coupe de grâce, vous avez perdu");
+				starting =false;
+				break;
+				
+			}else if(monstre.getPointVie() <= 0) {
+				monstre.setPointVie(0);
+				System.out.println("Vous tuez le barbare et avancer dans la salle numero " + (salle + 1));
+				break;
 			}
+		}while(player1.getPointVie() > 0 || monstre.getPointVie() > 0);
 		}
+
 	}
+	}
+	}
+	
 }

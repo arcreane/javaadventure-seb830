@@ -51,18 +51,10 @@ public class Personnage {
 
    //methodes
 	public boolean estMort(Personnage perso) {
-		if(perso.pointVie <= 0) {
-			perso.pointVie = 0;
-			int persoVie =  perso.pointVie;
-			setPointVie(persoVie);
-			setVivant(vivant = false);
-		}return vivant;
+		if(perso.getPointVie() <= 0) {
+			setPointVie(0);
+			setVivant(this.vivant = false);
+			System.out.println(perso.nom + " est mort");
+		}return this.vivant;
 	}
-	
-	
-	public void countTour() {
-		
-	}
-	
-	
 }

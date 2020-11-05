@@ -4,7 +4,7 @@ public class Monstre extends Personnage{
 	
 	//proprietes
 	private String race;
-	public int pointVie;
+	//public int pointVie;
 	public Arme arme = new Arme(" ", 0);
 
 	//construct
@@ -88,24 +88,12 @@ public class Monstre extends Personnage{
 	System.out.println("  _____________________________________");
 	System.out.println(" /____________________________________/|");
     System.out.println("|                                    | |");
-    System.out.println("|     VIE : "+getPointVie()+"                       ");
+    System.out.println("|     VIE ENEMI: "+this.getPointVie()+"                       ");
     System.out.println("|     MORAL : 100                    | |");
-    System.out.println("|     VIE ENEMI  : "+hero.getPointVie()+"                  ");
+    System.out.println("|     VIE BERNARD  : "+hero.getPointVie()+"                  ");
     System.out.println("|     DEGATS : "+ this.arme.getDegat()+"                     | |");
     System.out.println("|                                    | |");
     System.out.println("l____________________________________|/");
 	
-}
-	public void afficheStatsMonstre(Monstre m, Hero g, Arme arme) {
-		System.out.println("  _____________________________________");
-		System.out.println(" /____________________________________/|");
-        System.out.println("|                                    | |");
-        System.out.println("|     VIE : "+m.getPointVie()+"                       | |");
-        System.out.println("|     MORAL : 100                    | |");
-        System.out.println("|     VIE ENEMI  : "+g.getPointVie()+"                  | |");
-        System.out.println("|     DEGATS : "+ m.arme.getDegat()+"                       | |");
-        System.out.println("|                                    | |");
-        System.out.println("l____________________________________|/");
 	}
-	
 }

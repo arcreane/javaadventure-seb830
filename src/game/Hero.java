@@ -28,7 +28,7 @@ public class Hero  extends Personnage{
 		int chance = Arme.randCoup(10);
 		int chance2 = Arme.randCoup(3);
 		int degat = 0;
-	
+		
 		do
 		{
 			
@@ -58,14 +58,14 @@ public class Hero  extends Personnage{
 				}
 			}
 	}while(tour != 1);
-		int monstreVie = monster.pointVie;
+		int monstreVie = monster.getPointVie();
 		monstreVie -= degat;
 		monster.setPointVie(monstreVie);
 
 		System.out.println("  _____________________________________");
 		System.out.println(" /____________________________________/|");
         System.out.println("|                                    | |");
-        System.out.println("|     VIE : "+getPointVie()+"                       ");
+        System.out.println("|     VIE BERNARD: "+this.getPointVie()+"                       ");
         System.out.println("|     MORAL : 100                    | |");
         System.out.println("|     VIE ENEMI: "+monster.getPointVie()+"                 ");
         System.out.println("|     DEGATS : "+ degat +"                    | |");

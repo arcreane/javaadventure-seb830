@@ -4,15 +4,15 @@ import java.util.Scanner;
 
 public class Game {
 	
+	
 	public boolean starting = false;
-	
-	
-	
+
 	public void playing() {
 		
 		//message d'introduction
 		while(!starting) {
-			System.out.println(" ________________________________________");
+			
+			System.out.println("________________________________________");
 			System.out.println("\\             Votre mission             \\");
 			System.out.println(" \\  Votre roi Ferdinand IV vous confie   \\");
 			System.out.println("  \\ la tache de lui rapporter le tresor   \\");
@@ -22,6 +22,8 @@ public class Game {
 			System.out.println("  /   e - entrer   q - battre en retraite /");
 			System.out.println(" /_______________________________________/");
 			scanner();
+			
+			
 		}
 	}
 	
@@ -52,7 +54,7 @@ public class Game {
 	
 	public void initGame() {
 			//création d'un hero
-			Hero player1 = new Hero("Bernard", 10, false, "Chevalier");
+			Hero player1 = new Hero("Bernard", 100, true, "Chevalier");
 			
 			System.out.println("Vous ouvrez la porte du Donjon et entrez dans une salle.... ");
 			stage(player1);
@@ -64,7 +66,7 @@ public class Game {
 		String ok = scan.nextLine();	
 			
 		while(!ok.equals("n")) {
-		System.out.println("mauvais comm");
+		System.out.println("mauvais commande");
 		break;
 		}
 	}
@@ -97,7 +99,7 @@ public class Game {
 		Donjon donjon = new Donjon(1);
 		int salle = donjon.getSalle();
 		
-		for(int i = salle; i < salle + 6; i ++) 
+		for(int i = salle; i < salle + 5; i ++) 
 		{
 			System.out.println(" ______________________________");
 			System.out.println("|                              |");
@@ -106,7 +108,7 @@ public class Game {
 			int rand = Monstre.randMonstre();
 		//creation monstre aleatoirement
 		if(rand == 1) {
-			Monstre monstre = new Monstre("baltazar", 20, false, "magicien", new Arme("eclair", 8));
+			Monstre monstre = new Monstre("baltazar", 20, true, "magicien", new Arme("eclair", 8));
 			do{
 				
 				monstre.attaque(player1);
@@ -127,18 +129,19 @@ public class Game {
 				
 				//si mort  du hero ou du monstre
 				if(player1.getPointVie() <= 0){
-					//player1.estMort(player1);
 					player1.estMort(player1);
+					Game.afficheFin();
+					System.exit(1);
 								
 				}else if(monstre.getPointVie() <= 0) {
 					//monstre.estMort(monstre);
-					System.out.println("Vous parvenez à vous débarasser du magicien et avancez dans la salle numero " + (salle + 1));
+					System.out.println("Vous parvenez à vous débarasser du magicien et avancez dans la salle numero " + (i + 1));
 					break;
 			  }	
 			}while(player1.getPointVie() > 0 && monstre.getPointVie() > 0);	
 		
 		}else if(rand == 2){
-			Monstre monstre = new Monstre("patrick", 20, false, "barbare", new Arme("hache", 5));
+			Monstre monstre = new Monstre("patrick", 20, true, "barbare", new Arme("hache", 5));
 			do
 			{
 				monstre.attaque(player1);
@@ -157,9 +160,11 @@ public class Game {
 				
 				if(player1.getPointVie() <= 0){
 					player1.estMort(player1);
+					Game.afficheFin();
+					System.exit(1);
 					
 				}else if(monstre.getPointVie() <= 0) {
-					System.out.println("Vous tuez le barbare et avancer dans la salle numero " + (i));
+					System.out.println("Vous tuez le barbare et avancez dans la salle numero " + (i+1));
 					break;
 				}
 		   }while(player1.getPointVie() > 0 && monstre.getPointVie() > 0);
@@ -169,15 +174,27 @@ public class Game {
 	//fin du jeu si toutes les salles sont affichées
 	if(player1.vivant = true) {
 		System.out.println("Vous entrez dans la Derniere salle du donjon et decouvez le tresor\n");	
-		afficheFin();
+		afficheTresor();
 	}
 }
 	
 	public static void afficheFin() {
 		System.out.println("     ____________");
-		System.out.println("   		          ");
-		System.out.println("         FIN     ");
-		System.out.println("     ____________");
+		System.out.println("    |	         |");
+		System.out.println("    |     FIN    |");
+		System.out.println("    |____________|");
 	
 	}	
+	public static void afficheTresor() {
+		
+		System.out.println("   _____________  ");
+		System.out.println("  |____________|\\  ");
+		System.out.println("  \\             \\\\");
+		System.out.println("   \\_____________\\\\");
+		System.out.println("    /_____________/|");
+		System.out.println("    |	  °      | |");
+		System.out.println("    |   tré$or   | |");
+		System.out.println("    |____________|/");
+		
+	}
 }

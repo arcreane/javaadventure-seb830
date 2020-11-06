@@ -50,8 +50,7 @@ public class Personnage {
 	public void estMort(Personnage perso) {
 		perso.setPointVie(0);
 		perso.setVivant(false);	
-		System.out.println("\nL' enemi vous assène le coupe de grâce, Bernard à " +perso.getPointVie()+ " points de vie, \nvous avez perdu");
-		Game.afficheFin();
-		System.exit(1);
+		System.out.println(perso.getNom() + " tombe à terre avec : " +perso.getPointVie()+ " points de vie");
+		
 	}
 }

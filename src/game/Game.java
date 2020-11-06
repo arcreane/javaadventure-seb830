@@ -126,7 +126,6 @@ public class Game {
 				if(player1.getPointVie() <= 0){
 					//player1.estMort(player1);
 					player1.estMort(player1);
-					
 								
 				}else if(monstre.getPointVie() <= 0) {
 					//monstre.estMort(monstre);
@@ -154,13 +153,9 @@ public class Game {
 				}
 				
 				if(player1.getPointVie() <= 0){
-					//player1.estMort(player1);
 					player1.estMort(player1);
-					System.out.println("\nL' enemi vous assène le coupe de grâce, vous avez perdu");
-					
 					
 				}else if(monstre.getPointVie() <= 0) {
-					//monstre.estMort(monstre);
 					System.out.println("Vous tuez le barbare et avancer dans la salle numero " + (i));
 					break;
 				}

@@ -79,7 +79,6 @@ public class Monstre extends Personnage{
 	
 	//hero.setPointVie(heroVie);
 	
-	
 	System.out.println("  _____________________________________");
 	System.out.println(" /____________________________________/|");
     System.out.println("|                                    | |");

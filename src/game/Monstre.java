@@ -43,16 +43,17 @@ public class Monstre extends Personnage{
 		int chance = Arme.randCoup(10);
 		int chance2 = Arme.randCoup(3);
 		int degat = this.arme.getDegat();
+		int heroVie = hero.pointVie;
 	
-		do	{
+		do	
+		{
 		if (arme.getNom().equals("eclair")){
-			if(chance == 1) {
+			if(chance == 1 ) {
 				System.out.println("Baltazar lance un eclair qui vous paralyse : -" + degat + " points de vie\n");
 				System.out.println("il en profite pour vous attaquer de nouveau : -" + degat + " points de vie\n");
 				degat *= 2;
-				tour ++ ;	
+				tour ++;	
 			}else {
-				
 				System.out.println("Baltazar vous attaque avec son baton spherique : -" + degat + " points de vie");
 				tour++;
 			}
@@ -67,10 +68,16 @@ public class Monstre extends Personnage{
 				tour++;
 			}
 		}
-		}while(tour != 1);
-	int HeroVie = hero.pointVie;
-	HeroVie -= degat;
-	hero.setPointVie(HeroVie);
+		heroVie -= degat;
+		hero.setPointVie(heroVie);
+		
+		if(hero.getPointVie() <= 0) {
+			hero.estMort(hero);
+		}
+		}while(tour != 1 && hero.getPointVie() > 0);
+	
+	
+	//hero.setPointVie(heroVie);
 	
 	
 	System.out.println("  _____________________________________");

@@ -5,7 +5,7 @@ public class Personnage {
 	//proprietes
 	protected String nom;
 	protected int pointVie;
-	public boolean vivant;
+	protected boolean vivant;
 	protected String race;
 	
 		
@@ -47,14 +47,14 @@ public class Personnage {
 	}
 
    //methodes
-	public boolean estMort(Personnage perso) {
-		if(perso.getPointVie() <= 0) {
-			setPointVie(0);
-			setVivant(this.vivant = false);
-			System.out.println(perso.nom + " est mort");
-		}return this.vivant;
+	public void estMort(Personnage perso) {
+		perso.setPointVie(0);
+		perso.setVivant(false);	
+		System.out.println("\nL' enemi vous assène le coupe de grâce, vous avez perdu");
+		Game.afficheFin();
+		System.exit(1);
 	}
-
+	
 	public static void attaque(Personnage perso) {
 		int tour = 0;
 		int chance = Arme.randCoup(10);

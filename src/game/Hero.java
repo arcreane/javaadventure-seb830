@@ -22,6 +22,8 @@ public class Hero  extends Personnage{
 		
 		do
 		{
+		//comptage des degats infligés aux monstres par arme du hero
+		//comptage des tours du jeu
 		if(monster.getRace().equals("barbare"))
 			{
 			if(chance == 1) {
@@ -46,8 +48,10 @@ public class Hero  extends Personnage{
 					tour++;
 				}
 	}
+		//mise a  jour points de vie du monstre
 		monstreVie -= degat;
 		monster.setPointVie(monstreVie);
+		//Mort du monstre 
 		if(monster.getPointVie() <= 0) {
 			monster.estMort(monster);
 		}
@@ -55,7 +59,7 @@ public class Hero  extends Personnage{
 		
 		
 		
-
+		//affiche scores
 		System.out.println("  _____________________________________");
 		System.out.println(" /____________________________________/|");
         System.out.println("|                                    | |");

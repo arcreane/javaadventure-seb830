@@ -10,6 +10,7 @@ public class Game {
 	
 	public void playing() {
 		
+		//message d'introduction
 		while(!starting) {
 			System.out.println(" ________________________________________");
 			System.out.println("\\             Votre mission             \\");
@@ -24,7 +25,7 @@ public class Game {
 		}
 	}
 	
-
+	//entrée utilisateur intro
 	public String scanner() {
 		Scanner scan = new Scanner(System.in);
 		String choice = scan.nextLine();	
@@ -57,6 +58,7 @@ public class Game {
 			stage(player1);
 	}
 
+	//entrée utilisateur pour le deroulement du combat
 	public void scannerCombat() {
 		Scanner scan = new Scanner(System.in);
 		String ok = scan.nextLine();	
@@ -67,6 +69,7 @@ public class Game {
 		}
 	}
 	
+	//entree utilisateur pour le choix de l'arme
 	public String scanArme() {
 		Scanner scan = new Scanner(System.in);
 		String choixArme = scan.nextLine();
@@ -163,6 +166,7 @@ public class Game {
 		}
 	  }
 	}	
+	//fin du jeu si toutes les salles sont affichées
 	if(player1.vivant = true) {
 		System.out.println("Vous entrez dans la Derniere salle du donjon et decouvez le tresor\n");	
 		afficheFin();
@@ -175,11 +179,5 @@ public class Game {
 		System.out.println("         FIN     ");
 		System.out.println("     ____________");
 	
-	}
-	
-	
-	
-	
-	
-	
+	}	
 }

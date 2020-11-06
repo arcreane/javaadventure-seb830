@@ -31,7 +31,7 @@ public class Arme {
 	}
 
 	
-	// methodes
+	// definir le nombre de chance d'avoir un coup special 
 	public static int randCoup(int pourcent) {
 		int chance = 1 + (int)(Math.random() * ((pourcent- 1) + 1));
 		if(chance == 1) {

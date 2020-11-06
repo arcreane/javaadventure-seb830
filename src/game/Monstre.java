@@ -47,6 +47,8 @@ public class Monstre extends Personnage{
 	
 		do	
 		{
+		// comptage dégats infligés au hero en fonction du monstre (type d'arme)
+		//comptage d'un tour 
 		if (arme.getNom().equals("eclair")){
 			if(chance == 1 ) {
 				System.out.println("Baltazar lance un eclair qui vous paralyse : -" + degat + " points de vie\n");
@@ -68,17 +70,18 @@ public class Monstre extends Personnage{
 				tour++;
 			}
 		}
+		//mise a jour de la vie du hero
 		heroVie -= degat;
 		hero.setPointVie(heroVie);
 		
+		//mort du hero si Zero point ou negatif
 		if(hero.getPointVie() <= 0) {
 			hero.estMort(hero);
 		}
 		}while(tour != 1 && hero.getPointVie() > 0);
 	
-	
-	//hero.setPointVie(heroVie);
-	
+
+	// affichage des scores
 	System.out.println("  _____________________________________");
 	System.out.println(" /____________________________________/|");
     System.out.println("|                                    | |");

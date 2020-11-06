@@ -54,12 +54,4 @@ public class Personnage {
 		Game.afficheFin();
 		System.exit(1);
 	}
-	
-	public static void attaque(Personnage perso) {
-		int tour = 0;
-		int chance = Arme.randCoup(10);
-		int chance2 = Arme.randCoup(3);
-		int degat = 0;
-		
-	}
 }
